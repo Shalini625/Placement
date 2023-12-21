@@ -1,0 +1,87 @@
+Code 1.  Given two numbers, Swap those two numbers without using temporary variable
+Input:
+Two integer values as input
+Output:
+
+num1= value
+num2= value
+
+SOLUTION:
+
+#include <stdio.h>
+int main() {
+    int num1, num2;
+    printf("Enter two integer values: ");
+    scanf("%d %d", &num1, &num2);
+    printf( “num1 = %d, num2 = %d\n", num1, num2);
+    num1 = num1 + num2;
+    num2 = num1 - num2;
+    num1 = num1 - num2;
+     printf( “num1 = %d, num2 = %d\n", num1, num2);
+     return 0;
+}
+
+
+
+Code 2.  Calculate the number of years, weeks and the remaining days for the given total days
+Input:
+Any Integer
+Output:
+
+Number of Years:  NO_OF_COMPLETE_YEARS
+Number of Week: NO_OF_WEEKS_LEFTOUT
+Number of Days: NO_OF_DAYS_LEFTOUT
+
+SOLUTION:
+
+#include <stdio.h>
+int main() {
+    int totalDays, years, weeks, days;
+    printf("Enter the total number of days: ");
+    scanf("%d", &totalDays);
+    years = totalDays / 365;
+    totalDays = totalDays % 365;
+    weeks = totalDays / 7;
+    days = totalDays % 7;
+    printf("Number of Years: %d\n", years);
+    printf("Number of Weeks: %d\n", weeks);
+    printf("Number of Days: %d\n", days);
+    return 0;
+}
+
+
+Code 3.  Evaluate a polynomial of degree n.
+
+Input:
+Enter the degree of the polynomial: 3
+Enter the coefficients: 2 -1 3 4
+Enter the value of x: 2
+Output:
+P(2)
+
+SOLUTION:
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int degree, i;
+    printf("Enter the degree of the polynomial: ");
+    scanf("%d", &degree);
+    double coefficients[degree + 1];
+    printf("Enter the coefficients (from highest to lowest degree): ");
+    for (i = degree; i >= 0; i--) {
+        scanf("%lf", &coefficients[i]);
+    }
+
+    double x;
+    printf("Enter the value of x: ");
+    scanf("%lf", &x);
+    double result = 0;
+    for (i = degree; i >= 0; i--) {
+        result += coefficients[i] * pow(x, i);
+    }
+
+    printf("p(%lf) = %lf\n", x, result);
+    return 0;
+}
+
