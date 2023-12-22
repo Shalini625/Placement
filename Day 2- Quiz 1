@@ -1,0 +1,174 @@
+
+Question 1:-
+       Calculate the area of square or circle based on the shape ‘S’ for Square and ‘C’ 
+for Circle.
+
+Code :-
+
+#include <stdio.h>
+#include <math.h>
+
+double calculate_area(char shape, int size) {
+    if (shape == 'S') {
+        return pow(size, 2);
+    } else if (shape == 'C') {
+        return M_PI * pow(size, 2);
+    }
+}
+
+int main() {
+    char shape;
+    int size;
+
+    printf("Enter the shape (S for Square and C for Circle): ");
+    scanf(" %c", &shape);
+
+    printf("Enter the size: ");
+    scanf("%d", &size);
+
+    double area = calculate_area(shape, size);
+
+    if (shape == 'S') {
+        printf("Area of Square = %.0f\n", area);
+    } else if (shape == 'C') {
+        printf("Area of Circle = %.2f\n", area);
+    }
+
+    return 0;
+}
+
+Question 2:-
+       Given a sorted array having duplicate elements. Print the elements with its 
+frequency having more than one appearance.
+
+Code :-
+
+#include <stdio.h>
+
+void printDuplicateFrequency(int arr[], int n) {
+
+ int i = 0;
+
+ while (i < n) {
+
+ int count = 1;
+
+ while ((i < n - 1) && (arr[i] == arr[i + 1])) {
+
+ count++;
+
+ i++;
+
+ }
+
+if (count > 1) {
+
+ printf("%d->%d", arr[i], count);
+
+ if (i < n - 1) {
+
+ printf(",");
+
+ }
+
+ }
+
+ i++;
+
+ }
+
+ printf("\n");
+
+}
+
+int main() {
+
+ int n;
+
+ printf("Enter the size of the array: ");
+
+ scanf("%d", &n);
+
+ int arr[n];
+
+ printf("Enter the sorted array elements:\n");
+
+ for (int i = 0; i < n; i++) {
+
+ scanf("%d", &arr[i]);
+
+ }
+
+ printf("Sample Output:\n");
+
+ printDuplicateFrequency(arr, n);
+
+return 0;
+
+}
+
+Question 3:-
+      Given a sentence and screen length. Justify the sentence according to the screen length 
+by replacing space with stars.
+
+Code :-
+
+#include <stdio.h>
+#include <string.h>
+
+void justifySentence(char sentence[], int screenLength) {
+    int len = strlen(sentence);
+    int spaceCount = 0;
+
+    // Count the number of spaces in the sentence
+    for (int i = 0; i < len; i++) {
+        if (sentence[i] == ' ') {
+            spaceCount++;
+        }
+    }
+
+    // Calculate the number of spaces to insert between words
+    int spacesToInsert = screenLength - len + spaceCount;
+
+    // Calculate the number of spaces per gap
+    int spacesPerGap = (spaceCount > 0) ? spacesToInsert / spaceCount : 0;
+
+    // Calculate the remaining spaces after distributing equally
+    int remainingSpaces = (spaceCount > 0) ? spacesToInsert % spaceCount : 0;
+
+    // Justify the sentence and replace spaces with stars
+    for (int i = 0; i < len; i++) {
+        if (sentence[i] == ' ') {
+            int stars = spacesPerGap + ((remainingSpaces > 0) ? 1 : 0);
+            for (int j = 0; j < stars; j++) {
+                printf("*");
+            }
+            remainingSpaces--;
+        } else {
+            printf("%c", sentence[i]);
+        }
+    }
+
+    printf("\n");
+}
+
+int main() {
+    char sentence[100];
+    int screenLength;
+
+    // Input sentence from the user
+    printf(" Sentence = ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    // Remove the newline character from the entered sentence
+    sentence[strcspn(sentence, "\n")] = 0;
+
+    // Input screen length from the user
+    printf(" Screen length = ");
+    scanf("%d", &screenLength);
+
+    // Justify the sentence and print the result
+    justifySentence(sentence, screenLength);
+
+    return 0;
+}
