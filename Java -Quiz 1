@@ -1,0 +1,128 @@
+CODE 1:- a
+
+// Read an integer and display the integer
+
+import java.util.Scanner;
+
+public class ReadInteger {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int enteredInteger = scanner.nextInt();
+
+        System.out.println("Entered Integer: " + enteredInteger);
+
+        scanner.close();
+    }
+}
+
+CODE 1:- b
+
+// Average of floating point numbers 
+
+import java.util.Scanner;
+
+public class CalculateAverage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first floating-point number: ");
+        double number1 = scanner.nextDouble();
+
+        System.out.print("Enter the second floating-point number: ");
+        double number2 = scanner.nextDouble();
+
+        double average = (number1 + number2) / 2;
+
+        System.out.printf("Average: %.2f%n", average);
+
+        scanner.close();
+    }
+}
+
+CODE 2:-
+
+//Calculator 
+
+import java.util.Scanner;
+
+public class BasicCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.print("Enter the operator (+, -, *, /): ");
+        char operator = scanner.next().charAt(0);
+
+        double result = 0;
+
+        switch (operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error: Division by zero is not allowed.");
+                    System.exit(1); // Exit program due to division by zero
+                }
+                break;
+            default:
+                System.out.println("Error: Invalid operator.");
+                System.exit(1); // Exit program due to invalid operator
+        }
+
+        System.out.println("Result: " + result);
+
+        scanner.close();
+    }
+}
+
+CODE 3:-
+
+// Happy number Or not
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Example10 {
+
+    public static boolean isHappy_number(int num)
+    {
+        Set<Integer> unique_num = new HashSet<Integer>();
+
+        while (unique_num.add(num))
+        {
+            int value = 0;
+            while (num > 0)
+            {
+                value += Math.pow(num % 10, 2);
+                num /= 10;
+            }
+            num = value;
+        }
+
+        return num == 1;
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.print("Input a number: ");
+        int num = new Scanner(System.in).nextInt();
+        System.out.println(isHappy_number(num) ? "Happy Number" : "Unhappy Number");
+    }
+}
