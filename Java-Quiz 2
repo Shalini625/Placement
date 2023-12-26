@@ -1,0 +1,196 @@
+CODE 1:- 
+
+//Odd and even arrays
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class UserInputOddEvenArrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get array size from user
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        // Get array elements from user
+        int[] inputArray = new int[size];
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element " + (i + 1) + ": ");
+            inputArray[i] = scanner.nextInt();
+        }
+
+        ArrayList<Integer> evenList = new ArrayList<>();
+        ArrayList<Integer> oddList = new ArrayList<>();
+
+        for (int num : inputArray) {
+            if (num % 2 == 0) {
+                evenList.add(num);
+            } else {
+                oddList.add(num);
+            }
+        }
+
+        System.out.println("Even Array: " + evenList);
+        System.out.println("Odd Array: " + oddList);
+
+        scanner.close();
+    }
+}
+
+
+CODE 2:-
+
+// String Compression
+
+import java.util.Scanner;
+
+public class StringCompression {
+    public static String compress(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+
+        StringBuilder compressed = new StringBuilder();
+        int count = 1;
+
+        for (int i = 1; i < input.length(); i++) {
+            if (input.charAt(i) == input.charAt(i - 1)) {
+                count++;
+            } else {
+                compressed.append(input.charAt(i - 1));
+                if (count > 1) {
+                    compressed.append(count);
+                }
+                count = 1;
+            }
+        }
+
+        compressed.append(input.charAt(input.length() - 1));
+        if (count > 1) {
+            compressed.append(count);
+        }
+
+        return compressed.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a string:");
+        String userInput = scanner.nextLine();
+
+        String compressedString = compress(userInput);
+        System.out.println("Compressed string: " + compressedString);
+
+        scanner.close();
+    }
+}
+
+CODE 3:-
+
+//Z - Pattern for ZohoCorporationteam
+
+package Placement;
+
+import java.util.Arrays;
+
+import java.util.Scanner;
+
+ 
+
+public class Z_Pattern {
+
+ 
+
+               public static void main(String[] args) {
+
+                              Scanner sc = new Scanner(System.in);
+
+                              System.out.println("Enter input count");
+
+                              int count = sc.nextInt();
+
+ 
+
+                              String arr[] = new String[count];
+
+                              System.out.println("Enter " + count + " word");
+
+                              for (int i = 0; i < count; i++) {
+
+                                             arr[i] = sc.next();
+
+                              }
+
+ 
+
+                              System.out.println(Arrays.toString(arr));
+
+                             
+
+                              for (int i = 0; i < arr.length; i++) {
+
+                                             String word = arr[i];
+
+                                             boolean result = false;
+
+                                             for (int grid = 1; grid < word.length(); grid++) {
+
+                                                            int condition_1 = word.length() - (grid * 2);
+
+                                                            int condition_2 = grid - 2;
+
+                                                            int index = 0;
+
+ 
+
+                                                            if (condition_1 == condition_2) {
+
+                                                                           result = true;
+
+                                                                           for (int row = 1; row <= grid; row++) {
+
+ 
+
+                                                                                          for (int col = 1; col <= grid; col++) {
+
+                                                                                                         if (row == 1 || row + col == grid + 1 || row == grid)
+
+                                                                                                                        System.out.print(word.charAt(index++) + " ");
+
+                                                                                                         else
+
+                                                                                                                        System.out.print("  ");
+
+                                                                                          }
+
+                                                                                          System.out.println();
+
+                                                                           }
+
+                                                            }
+
+                                             }
+
+                                             System.out.println();
+
+                                             System.out.println();
+
+                                             if (result == false)
+
+                                                            System.out.println("No");
+
+                              }
+
+ 
+
+                             
+
+               }
+
+ 
+
+}
+
