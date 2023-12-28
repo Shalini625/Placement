@@ -1,0 +1,124 @@
+CODE 1:-
+
+import java.util.Scanner;
+
+public class ConstructorsExample {
+    private int value;
+
+    // No arguments constructor
+    public ConstructorsExample() {
+        System.out.println("No arguments constructor called.");
+    }
+
+    // Default constructor
+    public ConstructorsExample(int value) {
+        this.value = value;
+        System.out.println("Default constructor called with value: " + value);
+    }
+
+    // Parameterized constructor with different types of parameters
+    public ConstructorsExample(String strValue) {
+        this.value = Integer.parseInt(strValue);
+        System.out.println("Parameterized constructor called with string value: " + strValue);
+    }
+
+    // Another parameterized constructor with a different type of parameter
+    public ConstructorsExample(double doubleValue) {
+        this.value = (int) doubleValue;
+        System.out.println("Parameterized constructor called with double value: " + doubleValue);
+    }
+
+    public static void main(String[] args) {
+        // No arguments constructor
+        ConstructorsExample noArgsConstructor = new ConstructorsExample();
+
+        // Default constructor
+        System.out.print("Enter an integer value: ");
+        Scanner scanner = new Scanner(System.in);
+        int inputValue = scanner.nextInt();
+        ConstructorsExample defaultConstructor = new ConstructorsExample(inputValue);
+
+        // Parameterized constructor with string input
+        System.out.print("Enter a string value: ");
+        String strInput = scanner.next();
+        ConstructorsExample stringConstructor = new ConstructorsExample(strInput);
+
+        // Parameterized constructor with double input
+        System.out.print("Enter a double value: ");
+        double doubleInput = scanner.nextDouble();
+        ConstructorsExample doubleConstructor = new ConstructorsExample(doubleInput);
+
+        scanner.close();
+    }
+}
+
+CODE 2:-
+
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        int[] nums = {22, 22, 77, 77, 88, 89, 89};
+        int uniqueCount = removeDuplicates(nums);
+
+        System.out.println("After removing duplicates:");
+        for (int i = 0; i < uniqueCount; i++) {
+            System.out.print(nums[i] + " ");
+        }
+
+        System.out.println("\nNumber of unique elements: " + uniqueCount);
+    }
+
+    private static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i];
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+}
+
+CODE 3:-
+
+
+public class RearrangeArray {
+    public static void main(String[] args) {
+        int[] inputArray = {-12, 11, -13, -5, 6, -7, 5, -3, -6};
+        rearrangeArray(inputArray);
+        
+        // Print the rearranged array
+        for (int num : inputArray) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void rearrangeArray(int[] arr) {
+        int n = arr.length;
+        int left = 0, right = n - 1;
+
+        while (left <= right) {
+            if (arr[left] < 0 && arr[right] < 0) {
+                left++;
+            } else if (arr[left] > 0 && arr[right] < 0) {
+                // Swap arr[left] and arr[right], then move both pointers
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            } else if (arr[left] > 0 && arr[right] > 0) {
+                right--;
+            } else {
+                left++;
+                right--;
+            }
+        }
+    }
+}
